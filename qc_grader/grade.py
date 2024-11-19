@@ -16,7 +16,8 @@ import json
 from typing import Any, Callable, Optional, Tuple, Union
 from urllib.parse import urljoin
 
-from qiskit import QuantumCircuit, execute
+from qiskit import QuantumCircuit
+from qiskit.compiler import execute
 from qiskit.providers import JobStatus
 from qiskit.providers.ibmq.job import IBMQJob
 from qiskit.qobj import PulseQobj, QasmQobj
