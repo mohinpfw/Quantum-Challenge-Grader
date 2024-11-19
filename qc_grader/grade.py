@@ -10,7 +10,7 @@
 # Any modifications or derivative works of this code must retain this
 # copyright notice, and modified files need to carry a notice indicating
 # that they have been altered from the originals.
-
+!pip install qiskit-ibm-provider
 import json
 
 from typing import Any, Callable, Optional, Tuple, Union
@@ -19,7 +19,7 @@ from urllib.parse import urljoin
 from qiskit import QuantumCircuit
 from qiskit.primitives import Sampler
 from qiskit.providers import JobStatus
-from qiskit.providers.ibmq.job import IBMQJob
+from qiskit_ibm_provider import IBMProvider
 from qiskit.qobj import PulseQobj, QasmQobj
 
 from .api import get_server_endpoint, send_request, get_access_token, get_submission_endpoint, notify_provider
