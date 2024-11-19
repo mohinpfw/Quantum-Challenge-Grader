@@ -17,7 +17,7 @@ from typing import Any, Callable, Optional, Tuple, Union
 from urllib.parse import urljoin
 
 from qiskit import QuantumCircuit
-from qiskit.compiler import execute
+from qiskit.primitives import Sampler
 from qiskit.providers import JobStatus
 from qiskit.providers.ibmq.job import IBMQJob
 from qiskit.qobj import PulseQobj, QasmQobj
@@ -34,7 +34,17 @@ from .util import (
     uses_multiqubit_gate
 )
 
+def execute(circuits, backend, shots=1024, **kwargs):
+    """
+    Executes the given circuits on the specified backend using the Sampler primitive.
+    """
+    if isinstance(circuits, QuantumCircuit):
+        circuits = [circuits]
+    sampler = Sampler()
+    job = sampler.run(circuits, backend, shots=shots, **kwargs)
+    return job.result()
 
+# ... other imports ...
 def grade_and_submit(
     answer: Any,
     lab_id: str,
